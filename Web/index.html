@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with DeepPGDB</title>
+    <link rel="icon" href="images/robot.png" sizes="32x32" type="image/png">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f4f4f9;
+            position: relative; /* 确保输入框居中定位 */
+        }
+        
+        .header {
+            padding: 32px;
+            background-color: #007e47;
+            color: white;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+        .prompts {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        .prompt-button {
+            padding: 8px 16px;
+            font-size: 14px;
+            background-color: #009b25;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .prompt-button:hover {
+            background-color: #004494;
+        }
+        .chat-container {
+            flex: 1;
+            display: flex;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #fff;
+            border-radius: 8px;
+            margin: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .chat-history {
+            width: 300px;
+            margin-right: 20px;
+            padding: 10px;
+            background-color: #e1e1e1;
+            border-radius: 8px;
+            overflow-y: auto;
+        }
+        .chat-history h3 {
+            margin: 0 0 10px 0;
+            font-size: 16px;
+            color: #333;
+        }
+        .chat-history ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .chat-history li {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+        .chat-messages {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            max-height: 70vh; /* 限制聊天消息区域的最大高度 */
+            overflow-x: auto; /* 允许水平滚动 */
+        }
+        .message {
+            margin: 10px 0;
+            padding: 12px 16px;
+            border-radius: 8px;
+            max-width: 90%;
+            word-wrap: break-word;
+            animation: fadeIn 0.3s ease;
+        }
+        .user {
+            align-self: flex-end;
+            background-color: #CDAD00;
+            color: white;
+        }
+        .bot {
+            align-self: flex-start;
+            background-color: #FFF8DC;
+            color: black;
+        }
+
+        .input-container {
+            display: flex;
+            padding: 20px;
+            background-color: #fff;
+            border-top: 1px solid #ddd;
+            position: absolute;
+            top: 32em; /* 初始垂直居中 */
+            left: 74em; /* 初始水平居中 */
+            transform: translate(-50%, -50%); /* 确保完全居中 */
+            width: 64em;
+            transition: all 0.3s ease;
+        }
+        .input-container.active {
+            top: auto; /* 取消垂直居中 */
+            bottom: 20px; /* 下移到底部 */
+            left: 20px; /* 左对齐 */
+            transform: none; /* 取消 transform */
+            width: calc(100% - 40px); /* 调整宽度 */
+        }
+        input {
+            flex: 1;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-right: 10px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        input:focus {
+            border-color: #0078d7;
+        }
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            background-color: #0078d7;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #005bb5;
+        }
+        .loading {
+            align-self: flex-start;
+            padding: 12px 16px;
+            border-radius: 8px;
+            background-color: #e1e1e1;
+            color: black;
+            display: inline-block;
+        }
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border: 2px solid #0078d7;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+            margin-left: 8px;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        /* ECharts 容器样式 */
+        .echart-container {
+            width: 100%;
+            height: 300px;
+            margin-top: 10px;
+        }
+        /* 折叠样式 */
+        .collapsible {
+            max-height: 200px;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .collapsible.expanded {
+            max-height: none;
+        }
+        .toggle-button {
+            background-color: #0078d7;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .toggle-button:hover {
+            background-color: #005bb5;
+        }
+        /* 使用说明样式 */
+          .instruction {
+            position: absolute;
+            top: 20em; /* 保持相对位置 */
+            left: 63em; /* 保持相对位置 */
+            transform: translateX(-50%);
+            background-color: #00CC66;
+            color: white;
+            padding: 0.625em; /* 10px -> 0.625em */
+            border-radius: 0.5em; /* 8px -> 0.5em */
+            font-size: 1.1875em; /* 19px -> 1.1875em */
+            z-index: 1000;
+            transition: opacity 0.3s ease;
+            width: 50%; /* 宽度自适应内容 */
+            max-width: 90%; /* 防止溢出 */
+            text-align: center; /* 文字居中 */
+        }
+
+        .instruction img {
+            position: absolute;
+            top: 0em; /* 保持相对位置 */
+            left: -11em; /* 保持相对位置 */
+            transform: translateX(-50%);
+            width: 14em; /* 240px -> 15em */
+            height: 14em; /* 240px -> 15em */
+            border-radius: 0.5em; /* 8px -> 0.5em */
+        }
+
+        .instruction h2 {
+            margin: 0;
+            font-size: 1em; /* 保持相对大小 */
+            line-height: 1.5; /* 保持行高 */
+        }
+
+        .instruction.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #007e47; /* 背景颜色 */
+            color: white; /* 文字颜色 */
+            text-align: center;
+            padding: 10px 0; /* 上下内边距 */
+            font-size: 14px;
+            z-index: 1000; /* 确保在最上层 */
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* 可选：添加阴影 */
+        }
+    </style>
+    <!-- 引入 ECharts -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.3.2/dist/echarts.min.js"></script>
+</head>
+<body>
+   
+    <div class="header">
+        <h1>DeepPGDB: A Novel Paradigm for AI-Guided Interactive Genomic Databases</h1>
+        <div class="prompts">
+            <button class="prompt-button" onclick="usePrompt('Please help me download the Rice genome')">Please help me download the Rice genome</button>
+            <button class="prompt-button" onclick="usePrompt('map the sequence AGGTTGAAAAAAGACATACAACCTTGGCAAGAACGACGTTCGGCAGAATATATGACCCATGCTCCTTTA to the rice genome')">map the sequence AGATACAACCTT...CTCCTTTA to the rice genome</button>
+            <button class="prompt-button" onclick="usePrompt('Please map the sequence MSLRPSERAEVRRSRYKVAVDADEGRRRREDNMVEIRKSRREESLLKKRRDGLPAAAAAAAAASPL to the rice  genome')">Please map the sequence MSLRPSERALP...SPL   to the rice genome</button>
+            <button class="prompt-button" onclick="usePrompt('Help me find the SPL associated gene in Rice genome')">Help me find the SPL ... </button>
+            <button class="prompt-button" onclick="usePrompt('Please help me find the expression level of Os07g0261200  in Rice')">Please help me find the expression level of ...</button>
+            <button class="prompt-button" onclick="usePrompt('Help me extract the sequence located between position 322112 and 323112 on chromosome 3 in Rice genome.')">Help me extract the sequence located between position..</button>
+            <button class="prompt-button" onclick="usePrompt('Please help me extract the variation loci located between positions 224112 and 226112 on chromosome 2 of the rice population。')">Please help me extract the variation loci located...</button>
+            <button class="prompt-button" onclick="usePrompt('Please help me locate the rice gene Os01g0182600')">Please help me locate the rice gene Os01g0182600</button>
+            <button class="prompt-button" onclick="usePrompt('Please send arabidopsis gene AT5G22060.1,AT1G03000.1,AT2G44790.1,AT3G21460.1,AT5G17000.1,AT5G17000.2,AT3G25280.1,AT1G48480.1,AT2G17970.1,AT2G17970.3,AT2G17970.6,AT2G17970.2,AT2G17970.7, AT2G17970.8 to enrichment analysis.')">Please send arabidopsis gene AT...to enrichment analysis.</button>
+            <button class="prompt-button" onclick="usePrompt('帮我提取水稻中基因Os01g0773200的序列。')">帮我提取水稻基因Os01g0773200的序列。</button>        
+        </div>
+    </div>
+    <div class="prompts">
+            <p><b>If there is an incorrect response or the response is blank, it is recommended to refresh the dialog box and try again.</b></p>
+            <button style="position:relative; left:5%; background-color:#028237; border-radius:20px" onclick="window.location.href='document.html'">Click me Get the Help Document</button>
+            <button class="prompt-button" style="position:relative; left:5%" onclick="usePrompt('@User usage query:')">Click me and Type your Question about Usage in Chatbox below</button>
+    </div>
+    <div class="instruction" id="instruction">
+        <img src="./logo.png" style="display:flex;"  alt="Instruction Image" />
+        <h2>
+            &nbsp DeepPGDB provided a Novel Paradigm for AI-Guided Interactive Genomic Databases designed to lower technical barriers of plant genome utilization
+        </h2>
+        <img src="./flow.png" style="display:flex; top: 11em;left: 22em;width: 50em;height: 4.375em;" alt="Instruction Image" />
+    </div>
+    <div class="chat-container" style="overflow-wrap: break-word;">
+        <div class="chat-history" id="chat-history">
+            <h3>Recent Messages</h3>
+            <ul id="recent-messages"></ul>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            <!-- Chat messages will be dynamically added here -->
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="input-container" id="input-container">
+        <input type="text" id="message" placeholder="Type your message to access the genome data..." />
+        <button onclick="sendMessage()">Send</button>
+        &nbsp
+        <button onclick="sendRethinkedMessage()">Summarize</button>
+    </div>
+    <footer class="footer">
+        &copy; 2025 Guangdong Provincial Key Laboratory of Plant Molecular Breeding, South China Agricultural University. All rights reserved.  This website is free for academic non-profit institutions; Other users need a commercial license, Contact us.
+    </footer>
+    <script>
+    const chatMessages = document.getElementById('chat-messages');
+    const chatHistory = document.getElementById('recent-messages');
+    const inputContainer = document.getElementById('input-container');
+    const instruction = document.getElementById('instruction');
+    const recentMessages = [];
+
+    // Generate a session_id for the conversation
+    const session_id = generateSessionId();
+
+    // Function to generate a unique session ID
+    function generateSessionId() {
+        return 'session_' + Math.random().toString(36).substr(2, 9) + Date.now();
+    }
+
+    // Append messages to the chat window
+    function appendMessage(message, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${sender}`;
+
+        // Check if the message contains <echart>
+        if (message.includes('<echart>')) {
+            const echartStart = message.indexOf('<echart>');
+            const echartEnd = message.indexOf('</echart>');
+            const echartConfigStr = message.slice(echartStart + '<echart>'.length, echartEnd).trim();
+
+            try {
+                const echartConfig = JSON.parse(echartConfigStr);
+
+                // Create ECharts container
+                const chartDiv = document.createElement('div');
+                chartDiv.className = 'echart-container';
+                chartDiv.style.width = '800%';
+                chartDiv.style.height = '300px';
+                messageDiv.appendChild(chartDiv);
+                chatMessages.appendChild(messageDiv);
+
+                // Initialize ECharts
+                const myChart = echarts.init(chartDiv);
+                myChart.setOption(echartConfig);
+            } catch (error) {
+                console.error("ECharts configuration parsing failed:", error);
+                messageDiv.innerHTML = "ECharts configuration parsing failed. Please check the data format.";
+                chatMessages.appendChild(messageDiv);
+            }
+        } else {
+            // Regular text messages
+            const lines = message.split('\n');
+
+            if (lines.length > 50) {
+                const collapsibleDiv = document.createElement('div');
+                collapsibleDiv.className = 'collapsible';
+                collapsibleDiv.innerHTML = lines.slice(0, 50).join('<br>') + '...';
+                messageDiv.appendChild(collapsibleDiv);
+
+                const toggleButton = document.createElement('button');
+                toggleButton.className = 'toggle-button';
+                toggleButton.innerText = 'Expand';
+                toggleButton.onclick = function() {
+                    if (collapsibleDiv.classList.contains('expanded')) {
+                        collapsibleDiv.classList.remove('expanded');
+                        collapsibleDiv.innerHTML = lines.slice(0, 50).join('<br>') + '...';
+                        toggleButton.innerText = 'Expand';
+                    } else {
+                        collapsibleDiv.classList.add('expanded');
+                        collapsibleDiv.innerHTML = message;
+                        toggleButton.innerText = 'Collapse';
+                    }
+                };
+                messageDiv.appendChild(toggleButton);
+            } else {
+                messageDiv.innerHTML = message;
+            }
+            chatMessages.appendChild(messageDiv);
+        }
+
+        chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll to the bottom
+
+        // Update recent messages
+        if (sender === 'user') {
+            recentMessages.push(message);
+            if (recentMessages.length > 5) {
+                recentMessages.shift();
+            }
+            updateRecentMessages();
+        }
+    }
+
+    function updateRecentMessages() {
+        chatHistory.innerHTML = '';
+        recentMessages.forEach(msg => {
+            const li = document.createElement('li');
+            li.textContent = msg;
+            chatHistory.appendChild(li);
+        });
+    }
+
+    function showLoading() {
+        const loadingDiv = document.createElement('div');
+        loadingDiv.className = 'message loading';
+        loadingDiv.innerHTML = 'Thinking...';
+        chatMessages.appendChild(loadingDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll to the bottom
+        return loadingDiv;
+    }
+
+    function hideLoading(loadingDiv) {
+        loadingDiv.remove();
+    }
+
+    // Send message to the backend
+    async function sendMessage() {
+    const input = document.getElementById('message');
+    const message = input.value.trim();
+    if (!message) return; // Return if the message is empty
+
+    // Hide the instruction after the first message
+    instruction.classList.add('hidden');
+
+    // Add user message to the chat window
+    appendMessage(message, 'user');
+    input.value = ''; // Clear input field
+
+    // Show loading animation
+    const loadingDiv = showLoading();
+
+    // Move input container down
+    inputContainer.classList.add('active');
+
+    try {
+        // Send message to the backend
+
+        const response = await fetch('https://deeppgmd.chat/generate', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ message, session_id }), // Include session_id
+        });
+
+        // Check if the response is OK (status 200-299)
+        if (!response.ok) {
+            const errorData = await response.json().catch(() => ({})); // Try to parse error response
+            throw new Error(
+                `HTTP error! status: ${response.status}, message: ${errorData.error || 'Unknown error'}`
+            );
+        }
+
+        const data = await response.json();
+        console.log("Backend Response:", data); // Log backend response
+
+        // Hide loading animation
+        hideLoading(loadingDiv);
+
+        // Add AI's reply to the chat window
+        if (data.error) {
+            const errorMsg = `Error: ${data.error}`;
+            console.error("Backend Error:", data.error);
+            appendMessage(errorMsg, 'bot');
+        } else {
+            appendMessage(data.response, 'bot');
+        }
+    } catch (error) {
+        console.error("Fetch Error:", error); // Log full error to console
+        hideLoading(loadingDiv);
+        // Display complete error message in chat
+        const errorMsg = `Error: ${error.message || 'Failed to connect to server'}`;
+        appendMessage(errorMsg, 'bot');
+    }
+}
+    async function sendRethinkedMessage() {
+        const input = document.getElementById('message');
+        const message = input.value.trim();
+        if (!message) return; // Return if the message is empty
+
+        // Hide the instruction after the first message
+        instruction.classList.add('hidden');
+
+        // Add user message to the chat window
+        appendMessage(message + " (Summarize base on last output)", 'user');
+        input.value = ''; // Clear input field
+
+        // Show loading animation
+        const loadingDiv = showLoading();
+
+        // Move input container down
+        inputContainer.classList.add('active');
+
+        try {
+            // Send message to the backend with rethinked parameter
+            const response = await fetch('https://ricegenomichjx.xiaomy.net:11058/generate', {
+           // const response = await fetch('http://192.168.87.156:5000/generate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message, session_id, rethinked: true }), // Include rethinked parameter
+            });
+
+            const data = await response.json();
+            console.log("Backend Response:", data); // Log backend response
+
+            // Hide loading animation
+            hideLoading(loadingDiv);
+
+            // Add AI's reply to the chat window
+            if (data.error) {
+                appendMessage(`Error: ${data.error}`, 'bot');
+            } else {
+                appendMessage(data.response, 'bot');
+            }
+        } catch (error) {
+            console.error("Fetch Error:", error); // Log network error
+            hideLoading(loadingDiv);
+            appendMessage('Error connecting to server.', 'bot');
+        }
+    }
+    // Use a predefined prompt
+    function usePrompt(prompt) {
+        const input = document.getElementById('message');
+        input.value = prompt;
+    }
+
+    // Allow pressing Enter to send messages
+    document.getElementById('message').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            sendMessage();
+        }
+    });
+    </script>
+</body>
+</html>
+

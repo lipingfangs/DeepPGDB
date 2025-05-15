@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/robot.png" sizes="32x32" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCAU Bioinformatics Assistant</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #2c5e1a;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+        h2 {
+            color: #2c5e1a;
+            border-bottom: 2px solid #2c5e1a;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        .logo {
+            height: 80px;
+            margin-bottom: 15px;
+        }
+        .function-card {
+            background: white;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .function-title {
+            font-weight: bold;
+            color: #2c5e1a;
+            margin-bottom: 10px;
+        }
+        .example {
+            background-color: #f0f7ed;
+            padding: 15px;
+            border-left: 4px solid #2c5e1a;
+            margin: 15px 0;
+            font-family: monospace;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+        .note {
+            background-color: #fff8e1;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #2c5e1a;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>DeepPGDB Bioinformatics Assistant</h1>
+        <p>South China Agricultural University Genomics Bioinformatics Tool</p>
+    </header>
+
+    <section>
+        <h2>Introduction</h2>
+        <p>The SCAU Genomics Bioinformatics Assistant is a specialized tool developed by South China Agricultural University to automate common bioinformatics tasks with simple commands. It follows strict rules to generate appropriate commands based on user input.</p>
+    </section>
+
+    <section>
+        <h2>Core Functions</h2>
+        
+        <div class="function-card">
+            <div class="function-title">1. Sequence Analysis</div>
+            <p>Example inputs for sequence comparison:</p>
+            <div class="example">Input Example 1: 请将序列GCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCG比对到拟南芥数据库。
+Input Example 2: Please compare sequence MKTIIALSYIFCLVFADYKDDDDAAAGGGGGLAALWLLPLALALPLALWLAQKAAQAAAGAAA to rice database.</div>
+        </div>
+        
+        <div class="function-card">
+            <div class="function-title">2. Genome Data Retrieval</div>
+            <p>Example inputs for genome operations:</p>
+            <div class="example">Input Example 1: 请下载水稻基因组。
+Input Example 2: Download the tomato genome.
+Input Example 3: 请帮我提取水稻基因组3号染色体上322112至332112位置间的序列。
+Input Example 4: Extract sequence from position 1000000 to 2000000 on chromosome 5 of Arabidopsis.</div>
+        </div>
+        
+        <div class="function-card">
+            <div class="function-title">3. Gene Information Search</div>
+            <p>Example inputs for gene searches:</p>
+            <div class="example">Input Example 1: 请帮搜索水稻的MYB转录因子相关的基因。
+Input Example 2: Search for NAC transcription factors in rice.
+Input Example 3: 帮我严格搜索AP2相关的基因在拟南芥中。
+Input Example 4: Strictly search for WRKY genes in tomato.</div>
+        </div>
+        
+        <div class="function-card">
+            <div class="function-title">4. Expression Analysis</div>
+            <p>Example inputs for expression data:</p>
+            <div class="example">Input Example 1: 请帮我查找到Os11g0147600基因在水稻中的表达量, 并绘图。
+Input Example 2: Find expression of gene AT1G01090 in Arabidopsis and plot.
+Input Example 3: 请查找到AT1G01090基因在拟南芥中的表达量。</div>
+        </div>
+        
+        <div class="function-card">
+            <div class="function-title">5. Variation Analysis</div>
+            <p>Example inputs for variation data:</p>
+            <div class="example">Input Example 1: 请帮我提取水稻群体1号染色体上122112至125112位置间的变异位点, 并绘图。
+Input Example 2: Extract variants from position 500000 to 600000 on chromosome 2 of bitter gourd.</div>
+        </div>
+        
+        <div class="function-card">
+            <div class="function-title">6. Enrichment Analysis</div>
+            <p>Example inputs for enrichment analysis:</p>
+            <div class="example">Input Example 1: 请将拟南芥基因AT5G22060.1,AT1G03000.1,AT2G44790.1进行富集分析,并绘图。
+Input Example 2: Perform GO enrichment analysis for rice genes Os11t0147600-01,Os02t0802500-01.</div>
+        </div>
+
+        <div class="function-card">
+            <div class="function-title">7. Sequence Extraction</div>
+            <p>Example inputs for sequence extraction:</p>
+            <div class="example">Input Example 1: 请帮我提取水稻基因Os12g0541500的序列。
+Input Example 2: Extract sequence of gene AT5G16970.1 from Arabidopsis.
+Input Example 3: 请帮我提取拟南芥AT5G22060基因的序列。</div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Species Naming Convention</h2>
+        <p>The tool uses specific Latin binomial names for organisms:</p>
+        <table>
+            <tr>
+                <th>Common Name</th>
+                <th>Latin Binomial</th>
+            </tr>
+            <tr>
+                <td>Arabidopsis</td>
+                <td>Arabidopsis.thaliana</td>
+            </tr>
+            <tr>
+                <td>Rice</td>
+                <td>Oryza.sativa</td>
+            </tr>
+            <tr>
+                <td>Tomato</td>
+                <td>Solanum.lycopersicum</td>
+            </tr>
+            <tr>
+                <td>Bitter gourd</td>
+                <td>Momordica.charantia</td>
+            </tr>
+            <tr>
+                <td>Guava</td>
+                <td>Psidium.guajava</td>
+            </tr>
+            <tr>
+                <td>Apple</td>
+                <td>Malus.domestica</td>
+            </tr>
+            <tr>
+                <td>Watermelon</td>
+                <td>Citrullus.lanatus</td>
+            </tr>
+            <tr>
+                <td>Sweet orange</td>
+                <td>Citrus.sinensis</td>
+            </tr>
+        </table>
+        <div class="note">Note: Species names must be used exactly as shown, with no changes to capitalization or formatting.</div>
+    </section>
+
+    <section>
+        <h2>File Naming Convention</h2>
+        <p>All genomic files follow a strict naming pattern based on Latin binomial names:</p>
+        <ul>
+            <li>Genome file: <code>Latin_binomial.genome</code> (e.g., Arabidopsis.thaliana.genome)</li>
+            <li>Annotation file: <code>Latin_binomial.genome.ann</code></li>
+            <li>Expression file: <code>Latin_binomial.exp.csv</code></li>
+            <li>Gene file: <code>Latin_binomial.genome.gene</code></li>
+            <li>GTF file: <code>Latin_binomial.genome.gtf</code></li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Special Cases</h2>
+        <div class="function-card">
+            <div class="function-title">Deep Thinking Mode</div>
+            <p>Example input for summary task:</p>
+            <div class="example">Input Example: 这是深度思考任务：根据上一次的生成...</div>
+        </div>
+        
+        <div class="function-card">
+            <div class="function-title">Ambiguous Requests</div>
+            <p>Example of unclear input:</p>
+            <div class="example">Input Example: 请帮忙下载第8号染色体上100-20000的序列，谢谢！</div>
+        </div>
+    </section>
+
+    <footer>
+        <p>DeepPGDB; South China Agricultural University Genomics Bioinformatics Assistant</p>
+        <p>© 2025 SCAU. All rights reserved.</p>
+    </footer>
+</body>
+</html>
