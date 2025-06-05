@@ -12,6 +12,12 @@ Run the order with
 ```
 python main.py source.cfg
 ```
+The example contain of source.cfg file including:
+```
+ModelAPI=http://127.0.0.1 #Replace as your model API URL
+Prompt=./Prompt.txt  #Replace as your own prompt
+QueryModel=deepseek-r1-14b-16klt  #Replace as your model name
+```
 
 
 
