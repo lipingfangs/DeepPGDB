@@ -24,6 +24,6 @@ Run the web
 replace the 4 lines of index.html
 
 ```
-const response = await fetch('https://xxxxpgdb.chat/generate', {  #Replace it as your flask api start by main.py in last step.
+const response = await fetch('https://xxxxpgdb.chat/generate', {  #Replace the URL as your flask api start by main.py in last step.
 ```
 
