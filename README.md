@@ -8,16 +8,22 @@ The user needs to prepare a local model interface. Furthermore, modify the flask
 
 The model file can be downloaded [here](https://www.modelscope.cn/models/LEECHXP/DeepPGDB).
 
-Run the order with
+Run backend api with the order:
 ```
 python main.py source.cfg
 ```
 The example contain of source.cfg file including:
 ```
-ModelAPI=http://127.0.0.1 #Replace as your model API URL
+ModelAPI=http://127.0.0.1/generate #Replace as your model API URL
 Prompt=./Prompt.txt  #Replace as your own prompt
 QueryModel=deepseek-r1-14b-16klt  #Replace as your model name
+Tooldir=./script #Replace as your tools dir
+Datadir./data #Replace as your tools dir
 ```
+Run the web
+replace the 4 lines of index.html
 
-
+```
+const response = await fetch('https://xxxxpgdb.chat/generate', {  #Replace it as your flask api start by main.py in last step.
+```
 
