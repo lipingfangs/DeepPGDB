@@ -8,4 +8,10 @@ The user needs to prepare a local model interface. Furthermore, modify the flask
 
 The model file can be downloaded [here](https://www.modelscope.cn/models/LEECHXP/DeepPGDB).
 
+Run the order with
+```
+python main.py source.cfg
+```
+
+
 
