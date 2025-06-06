@@ -1,5 +1,5 @@
-# DeepPGDB![logo forgithub](https://github.com/user-attachments/assets/9bcdecb1-04ac-44e1-808b-7f05e4ffe647)
-
+# DeepPGDB
+![logo forgithub](https://github.com/user-attachments/assets/69538d08-a602-4bb4-a693-c7299e1e3212)
 
 Guided by these transformative advancements in large language model, we introduce DeepPGDB, the first AI-driven plant genomics database (https://www.deeppgdb.chat/). By combining model fine-tuning and prompt engineering, DeepPGDB represents a novel paradigm for interactive genomic databases. It is specifically designed to lower technical barriers, enabling seamless analysis of complex omics data based on high-quality genomes.
 
