@@ -1,0 +1,12 @@
+SpeicesName=Brachypodium.distachyon
+CommonName=二穗短柄草
+Genome=Brachypodium_distachyon.Brachypodium_distachyon_v3.0.dna.toplevel.fa
+cds=Brachypodium_distachyon.Brachypodium_distachyon_v3.0.cds.all.fa
+cdna=Brachypodium_distachyon.Brachypodium_distachyon_v3.0.cdna.all.fa
+pep=Brachypodium_distachyon.Brachypodium_distachyon_v3.0.pep.all.fa
+gff=Brachypodium_distachyon.Brachypodium_distachyon_v3.0.61.gff3
+functioninfo=Brachypodium_distachyon.Brachypodium_distachyon_v3.0.61.gff3.ann
+inputinfofile=promptnew3.txt
+outinfofile=promptnew3.new.txt
+#Expression=
+#Poputlation=
