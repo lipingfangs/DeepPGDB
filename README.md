@@ -23,8 +23,30 @@ QueryModel=deepseek-r1-14b-16klt  #Replace as your model name
 Tooldir=./script #Replace as your tools dir
 Datadir./data #Replace as your tools dir
 ```
+
+Run backend api with the order:
+```
+python Addgenome.py Addgenome.info
+```
+
+The example contain of Addgenome.info file including:
+```
+SpeicesName=Brachypodium.distachyon #<Latin binomial; separated by ".">
+CommonName=二穗短柄草 #<common name>
+Genome=Brachypodium_distachyon.Brachypodium_distachyon_v3.0.dna.toplevel.fa #<Genome file with fasta format>
+cds=Brachypodium_distachyon.Brachypodium_distachyon_v3.0.cds.all.fa #<cds file with fasta format>
+cdna=Brachypodium_distachyon.Brachypodium_distachyon_v3.0.cdna.all.fa  #<cdna file with fasta format>
+pep=Brachypodium_distachyon.Brachypodium_distachyon_v3.0.pep.all.fa #<pep file with fasta format>
+gff=Brachypodium_distachyon.Brachypodium_distachyon_v3.0.61.gff3 #<Annotation file>
+functioninfo=Brachypodium_distachyon.Brachypodium_distachyon_v3.0.61.gff3.ann  #<Functional annotation file>
+inputinfofile=promptnew3.txt #<Prompt file>
+outinfofile=promptnew3.new.txt #<The new Prompt generated with Addvalue.py which utilized in source.cfg file>
+#Expression=
+#Poputlation=
+```
+
 Run the web
-replace the 4 lines of index.html
+replace the 4 lines for backup of index.html
 
 ```
 const response = await fetch('https://xxxxpgdb.chat/generate', {  #Replace the URL as your flask api start by main.py in last step.
