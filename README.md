@@ -19,9 +19,11 @@ The example contain of source.cfg file including:
 ```
 ModelAPI=http://127.0.0.1/generate #Replace as your model API URL
 Prompt=./Prompt.txt  #Replace as your own prompt
+Promptdeep=promptnewdeep.txt #Replace as your own prompt for summarize
 QueryModel=deepseek-r1-14b-16klt  #Replace as your model name
-Tooldir=./script #Replace as your tools dir
-Datadir./data #Replace as your tools dir
+InfoModel=gemma3:12b #Model for Knowledge Retrieval
+scriptindex=./script #Tools Script Directory
+Infofile=genomeinfo.txt #Knowledge file for Retrieval
 ```
 
 If you want to add the new genome to the model:
