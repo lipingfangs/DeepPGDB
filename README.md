@@ -24,7 +24,7 @@ Tooldir=./script #Replace as your tools dir
 Datadir./data #Replace as your tools dir
 ```
 
-Run backend api with the order:
+If you want to add the new genome to the model:
 ```
 python Addgenome.py Addgenome.info
 ```
