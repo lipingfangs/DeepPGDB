@@ -54,4 +54,4 @@ replace the 4 lines for backup of index.html
 const response = await fetch('https://xxxxpgdb.chat/generate', {  #Replace the URL as your flask api start by main.py in last step.
 ```
 **Citation**
- Li F; Chen J; Luo W; Liu J; Chen G; Shuai B; Hou Z; Gan Z; Zhan P; Bi C et al DeepPGDB: A Novel Paradigm for AI-Guided Interactive Plant Genomic Database (2025)  Li F; Chen J; Luo W; Liu J; Chen G; Shuai B; Hou Z; Gan Z; Zhan P; Bi C et al
+ Li F; Chen J; Luo W; Liu J; Chen G; Shuai B; Hou Z; Gan Z; Zhan P; Bi C et al DeepPGDB: A Novel Paradigm for AI-Guided Interactive Plant Genomic Database (2025)  
