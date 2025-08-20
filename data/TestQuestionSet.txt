@@ -1,0 +1,157 @@
+Test Question list
+BLAST the protein FGQIKRFSWRELQIATNNFSEQSVLGKGGFGKVYKGVL to Arabidopsis
+Give me the sequence of Os02g0701700
+I need AT1G53340 sequence, the speics is Arabidopsis
+I need protein of OsMYB1 in Rice
+我要水稻基因ID为OsCYP1021的序列
+I need the sequence of transcript AT1G10120.1 in Arabidopsis genome
+I need the all the genes whose GO classification number is GO:1901363 in Arabidopsis
+I need the expressions of Os01t0891300-01 in Rice
+I need the sequence between 188888-189000 in Rice
+I need the variation loci located in 2000bp before 204506 on chr7 of Rice
+I need the variation sites between 12345 and 13345 on chr 4 of Rice population
+Extract the sequence between 451102- 452200 on chr7 in Rice genome
+Please help me extract the protein sequence of Os01t0392100-01 in Rice
+Please help me locate the rice gene AT1G69860.1
+Please help me visualize the expression level of OsWRKY1 in Rice
+give me the members of MYB in Arabidopsis
+我要水稻中所有Molecular Function字段为DNA-binding transcription的基因
+给我水稻1号染色体202304之前12000bp的序列
+Who are you
+把ACTCTTGAAATGTTGGACCCTAACCTAGCAGATATCGTTGAGGAAGAGGTTGTTCGGGTGATCAACGTCATTCTTATTTGCACTATGGGC比对到苦瓜基因组
+帮我查找到Os09g0456100基因在水稻基因组中的位置。
+帮我定位拟南芥的AT1G69860.1基因
+我要查找拟南芥中所有的DOF家族基因
+给我MYB1基因的序列
+帮我获取水稻 OsSPL3 的蛋白质编码序列
+帮我提取水稻ERF13的序列。
+帮我找到SPL基因
+告诉我水稻群体4号染色体20202-22000区间的变异情况
+Search all the MADSs in Arabidopsis
+帮我找到GRF1基因
+给我苦瓜1号染色体202304之后2000bp的序列
+给我拟南芥3号染色体1202304之3000bp的序列
+给我拟南芥3号染色体50004之前2000bp的序列
+帮我找到水稻OsWRKY51基因的表达量。
+你能做什么？
+请帮搜索水稻的SUMO过程相关的基因。
+请帮我提取拟南芥AT5G22060基因的序列。
+请帮我提取水稻OsMYB16的蛋白序列。
+请帮我提取水稻OsMYB16基因的序列。
+请帮我提取水稻基因组3号染色体上322112至332112位置间的序列。
+map the sequence AGTGGAAAAGCCTGAAGGGGAAATAGCTTTCCTGAGAGAAGTTGAATTGATAAGCATTGCTGTGCACAAGAAC to Rice genome
+I need variable sites in 90000-91000 of chr 9 of rice
+请帮我找到水稻OsSPL11基因的表达量。
+请帮我找一下水稻在6号染色体122121到123121上的变异位点。
+我要水稻Os01t0167700-02的序列
+水稻基因Os01g0182600的位置在哪？
+你是谁？
+水稻群体在6号染色体122121到123121上的变异情况怎样？
+我现在需要帮用户提取水稻OsSPL9基因的蛋白质序列
+我想要拟南芥AT1G69860基因的表达情况，并画出来
+水稻基因OsSPL1的位置在哪
+strictly search the CYP genes in Rice genome
+Give me the expression situation of OsERF1 in Rice and draw it
+我要提取拟南芥AT1G19715的蛋白序列
+严格寻找所有拟南芥MADS转录因子
+找一下AT1G01090基因在拟南芥中的位置
+map the sequence AGTGGAAAAGCCTGAAGGGGAAATAGCTTTCCTGAGAGAAGTTGAATTGATAAGCATTGCTGTGCACAAGAAC to genome
+找一下Os01t0167700-02的在水稻基因组中的位置
+给我9号染色体4565456-4566456的序列
+大豆基因GmFT2a的功能是什么
+Extract the 1000bp promoter sequence of  Arabidopsis AT2G15340
+我要水稻Os01g0100700基因的启动子
+找一下水稻基因Os03g0123400的cds区间的变异位点
+Align peptide RDRNLDNAYDLQELENIIQIALLCTHVEPH to soybean proteome
+BLAST序列 MSWLRNAVHRAVEASGGPLLTRTVRSSLGTVVHHAGQAVAGGARLINDRIGSRSYKSMRLTAKRLEDAALSYRGEDRVQLLRRWLVMLRETQRAAAAEKEAKRAGHPDQHLPVLDLYMDYETGAEPMNFIHVFLYSQALECLVLSMIMEFP到水稻蛋白
+水稻基因Os06g0579000，Os06g0815100，Os03g0675600的功能分别是什么
+I need the functional annotation of genes AT2G34580 and AT4G45670 in Arabidopsis
+Please help me download the rice protein sequences
+我需要番茄的基因组注释文件
+Please help me download the soybean mRNA
+我要火龙果HU01G00125基因的CDS
+please help me get the 1000bp promoter of rice gene OsSPL7
+提取番茄基因GS3的启动子
+拟南芥4号染色体3456730到3567920之间的基因有哪些
+Find genes between position 1895432 and 1928765 on chromosome 3 of Arabidopsis
+Show genes in Arabidopsis chromosome 2 from 50000 to 60000
+查询水稻6号染色体上从3123789到3124890区间的基因
+查找玉米中所有的NAC转录因子
+提取大豆中与根瘤形成相关的基因
+Extract flowering time genes in tomato
+Extract drought stress responsive transcription factors in Arabidopsis
+大豆基因GmFT2a的功能是什么
+Locate the position of the rice gene Os04g0678900 in the genome.
+Extract the CDS sequence of rice gene Os01t0823900-01.
+我需要拟南芥基因AT3G45670的1000bp启动子序列。
+寻找拟南芥4号染色体从123456到223456之间的基因。
+Help me retrieve the expression data of rice Os02g0765400.
+比较蛋白序列 AQSLENRMLGGEA 到拟南芥蛋白组。
+提取拟南芥中所有的bZIP转录因子。
+Find the variation sites between positions 203450 and 205600 on rice chromosome 7.
+提取玉米GRMZM2G123456基因的序列。
+Provide the promoter sequence of rice gene Os01g0100700.
+Locate the position of soybean gene GmSPL4 in the genome.
+在番茄中寻找所有的MADS转录因子。
+Extract the protein sequence of rice gene Os03g0234500.
+水稻6号染色体上122300到123500的变异情况如何？
+提取拟南芥AT2G32450基因的CDS序列。
+Locate the position of rice gene OsMYB21 in the genome.
+Retrieve and visualize the expression data of rice OsWRKY45.
+提取拟南芥5号染色体从45000到55000的DNA序列。
+What are the functions of rice genes Os06g0579000 and Os06g0815100?
+Map the sequence TGCAGTGAAGATGTTCT to the rice genome.
+提取拟南芥中所有与光周期相关的基因。
+找到番茄基因Solyc02g083560的启动子序列。
+Extract the protein sequence of rice gene OsGRF1.
+查询大豆基因Glyma.08G075500的功能。
+Extract the 1000bp promoter sequence of rice gene OsSPL14.
+请给出拟南芥基因AT3G12345的功能注释。
+提取水稻Os01t0345600-01的序列。
+Locate the position of Arabidopsis gene AT5G45670 in the genome.
+Find all members of the NAC transcription factor family in maize.
+请帮我下载拟南芥的蛋白质序列文件。
+Extract and visualize the expression levels of rice gene OsERF2.
+在番茄基因组中查找所有SPL转录因子。
+Extract the protein sequence of Arabidopsis gene AT1G69000.
+查询水稻基因Os01g0987600的功能注释。
+Extract drought-responsive genes in soybean.
+找到水稻Os03g0123400的CDS区域变异位点。
+查询拟南芥4号染色体从230000到240000之间的基因。
+Extract the protein sequence of rice gene OsMYB16.
+What is the expression level of rice gene OsWRKY51?
+Extract node meristem-related genes in soybean.
+I need the sequence from positions 123450 to 124500 on rice chromosome 6.
+Find all ERF transcription factors in Arabidopsis.
+下载水稻基因组注释文件。
+Extract the protein sequence of rice gene OsSPL9.
+找到拟南芥基因AT4G26000的功能注释。
+Align protein sequence RSTNLDEAY to the rice proteome.
+在水稻基因组中定位OsCYP21的位置。
+提取番茄中所有与果实发育相关的基因。
+Find the variations between positions 100000 and 200000 on rice chromosome 4.
+Download the mRNA sequence file of soybean.
+查找拟南芥中所有的DOF转录因子家族成员。
+Extract the expression data of rice gene OsSPL11.
+查询拟南芥AT3G29850基因在基因组中的位置。
+Find the CDS sequence of rice gene OsMYB1.
+提取番茄基因Solyc03g023450的1000bp启动子。
+查询拟南芥基因AT1G12340的表达量并绘制图表。
+Extract the sequence of rice gene Os03g0121700.
+Map the sequence TGCATGACTGAGT to the tomato genome.
+提取拟南芥中所有的NAC转录因子。
+Retrieve the functional annotation of rice gene Os06g0579000.
+提取番茄基因Solyc04g056700的表达量。
+找到水稻基因Os01t0823900-01的启动子序列。
+Extract the sequence between positions 123000 and 124000 on Arabidopsis chromosome 3.
+比对蛋白序列 LPLQEAAY 到大豆蛋白组。
+Find all disease resistance-related genes in rice.
+Extract the protein sequence of Arabidopsis gene AT3G54320.
+查询番茄基因Solyc02g083560的功能注释。
+提取大豆GmFT2a的1000bp启动子序列。
+水稻基因Os01g0100700的位置在哪里？
+Find the CDS sequence of Arabidopsis AT2G15340.
+Extract the protein sequence of rice gene OsMYB16.
+查询拟南芥基因AT5G22060的功能注释。
+比对蛋白序列GTVVHHAGQAVAGGARLINDRIGSRSYKSMSWLRNAVHRA到火龙果蛋白组
+compare sequence TGGAGGGCCGGTTTGCTGGGTTCCACTCATAGCGCCACAATGGCCAGCTTTCTCAACTTTT to soybean chromosomes
